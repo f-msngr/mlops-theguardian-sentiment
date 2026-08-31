@@ -404,7 +404,7 @@ def write_forecasts(engine, forecast: pd.DataFrame, run_id: str, run_date, schem
 def fetch_forecasts(engine, run_date=None, schema=DB_SCHEMA) -> pd.DataFrame:
     """
     Return Prophet forecasts for a given run_date.
-    If run_date is None, returns the latest run.
+    If run_date is None, returns the latest run (most recent created_at).
 
     Args:
         engine   : SQLAlchemy engine
@@ -419,14 +419,14 @@ def fetch_forecasts(engine, run_date=None, schema=DB_SCHEMA) -> pd.DataFrame:
     if run_date is None:
         subquery = f"""
             SELECT run_id FROM {schema}.forecasts
-            ORDER BY run_date DESC
+            ORDER BY created_at DESC
             LIMIT 1
         """
     else:   # Get the closest to the provided date
         subquery = f"""
             SELECT run_id FROM {schema}.forecasts
             WHERE run_date <= :date
-            ORDER BY run_date DESC
+            ORDER BY run_date DESC, created_at DESC
             LIMIT 1
         """
 

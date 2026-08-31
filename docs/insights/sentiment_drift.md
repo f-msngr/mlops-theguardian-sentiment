@@ -1,25 +1,21 @@
 ## Drift sur le sentiment FinBERT
 
-Le drift c'est quand la distribution statistique des données change dans le temps par rapport à une référence.
-Dans ton cas concret :
+Si la distribution statistique des données change dans le temps par rapport à une référence.
 
 Référence (ex: 2021-2023)
 → 40% positive, 35% negative, 25% neutral
 → score moyen : 0.72
 → distribution des scores : centrée sur 0.7
 
-Production (ex: 2025)
+Nouvelle distribution (ex: 2025)
 → 20% positive, 60% negative, 20% neutral
 → score moyen : 0.61
 → distribution des scores : décalée vers le bas
 
-Evidently détecte ce décalage statistiquement — il te dit "la distribution de sentiment_score aujourd'hui est significativement différente de ta référence". Ce n'est pas forcément un problème du modèle — c'est peut-être la réalité économique qui a changé. Mais ça mérite d'être signalé
 
 ---
 ## Drift Prophet
-Comment Prophet peut dériver
-
-Prophet ne "dérive" pas comme un classifieur — il n'apprend pas en continu. Mais sa qualité de prévision se dégrade quand :
+Comment Prophet peut dériver. Prophet ne "dérive" pas comme un classifieur — il n'apprend pas en continu. Mais sa qualité de prévision se dégrade quand :
 
 1. Un événement structurel change la tendance
    ex: une crise économique majeure casse le pattern historique
