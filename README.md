@@ -380,4 +380,4 @@ sequenceDiagram
 ## Auteur
 
 **Fabien Messinger** — Data Engineer, certifié Architecte IA (RNCP7, Jedha)
-[GitHub](https://github.com/Fabthenabab) · [LinkedIn](https://www.linkedin.com/in/fabien-messinger)
+[GitHub](https://github.com/f-msngr) · [LinkedIn](https://www.linkedin.com/in/fabien-messinger)
